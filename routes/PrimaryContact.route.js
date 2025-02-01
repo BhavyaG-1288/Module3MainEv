@@ -12,8 +12,14 @@ PrimaryContactRoute.post("/Login", (req, res)=>{
     try{
         if(!email && !Password) {
             res.status(403).json({msg:"User Not Found"});
+        }else{
+            res.status(201).json({msg:"User Exits already"})
+
+        }if(ContactPresent=fromOldData){
+            res.status(203).json({msg:"User From Old Contact,Need To Update"})
         }
     }catch(err){
         res.status(500).json({msg:"Something went wrong"})
     }
 })
+module.export =PrimaryContactRoute;
